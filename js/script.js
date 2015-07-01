@@ -1,105 +1,90 @@
-
-
 /**********   Слайдер   **********/
+var slider = {
+    options: {
+        isStarted: false
+    },
 
-var links = document.querySelectorAll(".itemLinks");
-var wrapper = document.querySelector(".slider_wrapper");
-var items = document.querySelectorAll(".slider_item");
+    init: function(){
+        this.sliderWrapper = $('.slider_item_wrapper');
+        this.startTimerScroll = this.sliderWrapper.offset().top - (this.sliderWrapper.height() / 2);
+        this.links = $(".itemLinks");
+        this.items = $(".slider_item");
+        this.activeLink = 0;
+
+        this.links.each(function(i, item){
+            item.itemID = i;
+        });
+
+        this.links.on('click', function(e){
+            e.preventDefault();
+            var item = e.currentTarget;
+
+            this.removeActive();
+
+            this.activeLink = item.itemID;
+            this.fadeIn(this);
+        });
 
 
-var activeLink = 0;
+        this.sliderWrapper.on('mouseover', function(){
+            this.stopTimer();
+        }.bind(this));
 
 
+        this.sliderWrapper.on('mouseout', function(){
+            this.startTimer();
+        }.bind(this));
 
-for (var i = 0; i < links.length; i++) {
-    var link = links[i];
-    link.addEventListener('click', setClickedItem, false);
 
-    link.itemID = i;
-}
+        $(window).scroll(function(e){
+            if( $('body').scrollTop() > this.startTimerScroll ) {
+                this.startTimer();
+            }
+        }.bind(this));
 
-links[activeLink].classList.add("active");
+        this.links[this.activeLink].classList.add("active");
+    },
 
-function setClickedItem(e) {
-    removeActiveLinks();
-    removeDisplay();
+    startTimer: function(){
+        if(!this.options.isStarted){
+            this.timeoutID = window.setInterval(this.goToNextItem.bind(this), 5000);
+            this.isStarted = true;
+        }
+    },
 
-    var clickedLink = e.target;
-    activeLink = clickedLink.itemID;
+    stopTimer: function(){
+        clearInterval(this.timeoutID);
+        this.options.isStarted = false;
+    },
 
-    fadeIn(clickedLink);
-}
+    removeActive: function(){
+        this.links.removeClass('active');
+        this.items.removeClass('display_block');
+    },
 
-function removeActiveLinks() {
-    for (var i = 0; i < links.length; i++) {
-        links[i].classList.remove("active");
+    goToNextItem: function() {
+        this.removeActive();
+
+        if (this.activeLink < this.links.length - 1) {
+            this.activeLink++;
+        } else {
+            this.activeLink = 0;
+        }
+
+        var newLink = this.links[this.activeLink];
+        this.fadeIn(newLink);
+    },
+
+    fadeIn: function(link) {
+        link.classList.add("active");
+
+        var slideNumber = link.getAttribute("data-slide");
+        $("#" + slideNumber).addClass("display_block");
     }
-}
-
-function removeDisplay() {
-	for (var i = 0; i < items.length; i++) {
-        items[i].classList.remove("display_block");
-    }
-}
-
-function fadeIn(link) {
-    link.classList.add("active");
-
-    var slideNumber = link.getAttribute("data-slide");
-    document.getElementById(slideNumber).classList.add("display_block");
-}
-
+};
 
 /*********  Автопереключение слайдера  ***********/
 
-
-
-var timeoutID;
-
-function startTimer() {
-    timeoutID = window.setInterval(goToNextItem, 5000);
-}
-
-startTimer();
-
-function resetTimer() {
-    window.clearInterval(timeoutID);
-    startTimer();
-}
-
-var classList = document.body.classList;
-
-classList.contains("slider_item__left").onmouseover = function(){
-	window.clearInterval(timeoutID);
-}
-classList.contains("slider_item__left").onmouseout = function(){
-	startTimer();
-}
-
-function goToNextItem() {
-    removeActiveLinks();
-    removeDisplay();
-
-    if (activeLink < links.length - 1) {
-        activeLink++;
-    } else {
-        activeLink = 0;
-    }
-
-    var newLink = links[activeLink];
-    fadeIn(newLink);
-}
-
-function setClickedItem(e) {
-    removeActiveLinks();
-    removeDisplay();
-    resetTimer();
-
-    var clickedLink = e.target;
-    activeLink = clickedLink.itemID;
-
-    fadeIn(clickedLink);
-}
 
 
 
@@ -157,10 +142,6 @@ var h = $(window).height();
 		}
 	});
 
-
-// watch presentation video
-
-classList.contains("play").onmouseover = function() {
-	classList.contains("watch").style.fill = "red";
-}
-
+$(document).ready(function(){
+    slider.init();
+});
