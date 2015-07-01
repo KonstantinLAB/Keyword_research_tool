@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>SEMrush Keyword Research Tool</title>
 	<link rel="stylesheet" href="css/style.css">
 
 	<script src="js/jquery-1.11.2.min.js"></script>
@@ -35,25 +35,52 @@
 				</g>
 			</svg>
 
-			<iframe id="video" width="560" height="315" src="http://www.youtube.com/v/rL47BTUClO8?version=3&playerapiid=ytplayer&enablejsapi=1" frameborder="0" allowfullscreen></iframe><br>
+			<iframe id="Youtube" width="560" height="315" src="https://www.youtube.com/embed/rL47BTUClO8?list=PLV7hU9BBDbaT1HJmiStHFYEVUfzNgFyXQ?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>			
+			<div id="playYoutube"></div>
+			<div id="pauseYoutube"></div><br>
 
+			<script src="//www.youtube.com/player_api"></script>
+			<script>
+				var play;
+				function onYouTubePlayerAPIReady() {
+				    play = new YT.Player('Youtube', {videoId: 'rL47BTUClO8?list=PLV7hU9BBDbaT1HJmiStHFYEVUfzNgFyXQ',});
+				    document.getElementById('playYoutube').onclick = function() {play.playVideo();};
+				    document.getElementById('pauseYoutube').onclick = function() {play.pauseVideo();};
+				}
+			</script>
 			<div class="button_block">
-				<button>Get 10 queries for FREE!</button>
+				<button class="queries">Get 10 queries for FREE!</button>
 			</div>
 		</div>
 	</div>
 
 
 	<div class="register_popup popup">
+		<img src="img/logo.png" alt="semrush.com" style="margin-left: -10px;">
+		<svg class="close_popup" id="Слой_1" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve">
+			<g id="XMLID_48_">
+				<g id="XMLID_1_">
+					<path id="XMLID_17_" class="st0" d="M11,1c5.5,0,10,4.5,10,10c0,5.5-4.5,10-10,10S1,16.5,1,11C1,5.5,5.5,1,11,1 M11,0
+						C4.9,0,0,4.9,0,11c0,6.1,4.9,11,11,11s11-4.9,11-11C22,4.9,17.1,0,11,0L11,0z"/>
+				</g>
+				<g id="XMLID_4_">
+					<path id="XMLID_2_" class="st0" d="M15.3,7.4l-7.8,7.8c-0.2,0.2-0.5,0.2-0.7,0l0,0c-0.2-0.2-0.2-0.5,0-0.7l7.8-7.8
+						c0.2-0.2,0.5-0.2,0.7,0l0,0C15.4,7,15.4,7.3,15.3,7.4z"/>
+					<path id="XMLID_3_" class="st0" d="M7.4,6.7l7.8,7.8c0.2,0.2,0.2,0.5,0,0.7l0,0c-0.2,0.2-0.5,0.2-0.7,0L6.7,7.4
+						C6.6,7.3,6.6,7,6.7,6.8l0,0C7,6.6,7.3,6.6,7.4,6.7z"/>
+				</g>
+			</g>
+		</svg>
+
 		<h2>Get 10 queries for FREE</h2>
 		<form action="">
-			<input type="email" name="email" placeholder="Email">
-			<input type="password" name="password" placeholder="Password">
+			<label for="input_email"></label>
+			<input id="input_email" type="email" name="email" placeholder="Email">
+			<label for="input_pass"></label>
+			<input id="input_pass" type="password" name="password" placeholder="Password">
 			<button type="submit">Get FREE queries</button>
 		</form>
-		<div class="button_block">
-			<button>Get 10 queries for FREE!</button>
-		</div>
+		
 	</div>
 
 	<!-- pop-up ends -->	
@@ -65,10 +92,10 @@
 	<div class="header">
 		<div class="container">
 			<ul class="nav clearfix">
-				<li><a href="http://www.semrush.com/mobile-us/prices/">prices</a></li>
-				<li><a href="http://www.semrush.com/mobile-us/support/contact/">contacts</a></li>
-				<li><a href="http://www.semrush.com/blog/">blog</a></li>
-				<li><a href="#">register</a></li>
+				<li><a href="http://www.semrush.com/mobile-us/prices?" target="_blank">prices</a></li>
+				<li><a href="http://www.semrush.com/mobile-us/support/contact/" target="_blank">contacts</a></li>
+				<li><a href="http://www.semrush.com/blog/" target="_blank">blog</a></li>
+				<li><a href="#" target="_blank">register</a></li>
 			</ul>
 			<a href="https://www.semrush.com" class="logo">
 				<img src="img/logo.png" alt="semrush.com">
@@ -100,11 +127,11 @@
 					<li>See keyword rankings in mobile search results</li>
 					<li>View search volume, CPC, trend and ad copies for every keyword</li>
 					<li>Gather phrase matches and related keywords</li>
-					<li>Find keywords in 28 SEMrush regional databases </li>
+					<li>Find keywords in 29 SEMrush regional databases </li>
 					<li>Estimate keyword difficulty instantly</li>
 				</ul>
 				<div class="button_block">
-					<button>Get 10 queries for FREE!</button><br>
+					<button class="queries">Get 10 queries for FREE!</button><br>
 				</div>
 			</div>
 			
@@ -117,8 +144,8 @@
 
 	<!-- main_stats starts -->
 
-	<div class="main_stats clearfix">
-		<div class="container">
+	<div class="main_stats">
+		<div class="container clearfix">
 			<div class="main_stats__item">
 				<img src="img/users.png" alt="590 000 users"><br>
 				<span class="number">590 000</span>
@@ -135,8 +162,8 @@
 				<span>domains</span>
 			</div>
 			<div class="main_stats__item">
-				<img src="img/databases.png" alt="28 databases, 16 languages"><br>
-				<span class="number">28 databases</span>
+				<img src="img/databases.png" alt="29 databases, 16 languages"><br>
+				<span class="number">29 databases</span>
 				<span>16 languages</span>
 			</div>
 		</div>
@@ -158,28 +185,28 @@
 				<div class="carousel_wrapper">
 					<div class="carousel_items">
 						<div class="carousel_item ci1">
-							<a href="" class="cl1"></a>
+							<span href="" class="cl1"></span>
 						</div>
 						<div class="carousel_item ci2">
-							<a href="" class="cl2"></a>
+							<span href="" class="cl2"></span>
 						</div>
 						<div class="carousel_item ci3">
-							<a href="" class="cl3"></a>
+							<span href="" class="cl3"></span>
 						</div>
 						<div class="carousel_item ci4">
-							<a href="" class="cl4"></a>
+							<span href="" class="cl4"></span>
 						</div>
 						<div class="carousel_item ci5">
-							<a href="" class="cl5"></a>
+							<span href="" class="cl5"></span>
 						</div>
 						<div class="carousel_item ci6">
-							<a href="" class="cl6"></a>
+							<span href="" class="cl6"></span>
 						</div>
 						<div class="carousel_item ci7">
-							<a href="" class="cl7"></a>
+							<span href="" class="cl7"></span>
 						</div>
 						<div class="carousel_item ci8">
-							<a href="" class="cl8"></a>
+							<span href="" class="cl8"></span>
 						</div>
 					</div>
 				</div>
@@ -438,7 +465,7 @@
 			<div class="historical_data__right">
 				<h2>SEMrush Keyword Research Tool<br><span>Historical Data</span></h2>
 				<p>Historical data enables you to perform research on keywords and domains on a month-to-month basis. Historical data points represent averages for that particular month. </p>
-				<p>Historical data are available for 11 databases <span>dating back to January 2012, and for 15 new regional databases*</span> containing gathered data from December 2013 forward.</p>
+				<p>Historical data are available for 11 databases <span>dating back to January 2012, and for 17 new regional databases</span> containing gathered data from December 2013 forward.</p>
 			</div>
 			<img src="img/history.png" alt="historical data">
 		</div>
@@ -473,7 +500,7 @@
 						<span class="organization">Founder at Seobook.com</span>
 					</div>
 					<div class="button_block">
-						<button>Get 10 queries for FREE!</button><br>
+						<button class="queries">Get 10 queries for FREE!</button><br>
 					</div>
 				</div>
 			</div>
@@ -590,6 +617,21 @@
 					<a href="#" class="hon"></a>
 					<span>Hong Kong</span>
 				</div>
+
+				<div class="flags__item item_30">
+				</div>
+
+				<div class="flags__item">
+					<a href="#" class="ind"></a>
+					<span>India</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="jap"></a>
+					<span>Japan</span>
+				</div>
+
+				<div class="flags__item item_30">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -603,9 +645,9 @@
 		<div class="container clearfix">
 			<div class="footer__right_block clearfix">
 				<ul class="footer__menu">
-					<li> <a href="http://www.semrush.com/mobile-us/prices/">prices</a></li>
-					<li> <a href="http://www.semrush.com/blog/">blog</a></li>
-					<li><a href="#" class="register">register</a></li>
+					<li> <a href="http://www.semrush.com/mobile-us/prices/" target="_blank">prices</a></li>
+					<li> <a href="http://www.semrush.com/blog/" target="_blank">blog</a></li>
+					<li><a href="#" class="register" target="_blank">register</a></li>
 				</ul>
 				<div class="social_block">
 					<span>Follow us:</span>
@@ -633,7 +675,7 @@
 		</div>
 		<div class="footer__copyright">
 			<div class="container">
-				<span>® 2008-2015. SEMrush. All right reserved.</span>
+				<span>® 2008-2015. SEMrush. All rights reserved.</span>
 			</div>
 		</div>
 	</div>
@@ -642,6 +684,7 @@
 	
 	
 	<script src="js/script.js"></script>
+	
 
 </body>
 </html>

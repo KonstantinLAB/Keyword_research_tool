@@ -59,11 +59,21 @@ var timeoutID;
 function startTimer() {
     timeoutID = window.setInterval(goToNextItem, 5000);
 }
+
 startTimer();
 
 function resetTimer() {
     window.clearInterval(timeoutID);
     startTimer();
+}
+
+var classList = document.body.classList;
+
+classList.contains("slider_item__left").onmouseover = function(){
+	window.clearInterval(timeoutID);
+}
+classList.contains("slider_item__left").onmouseout = function(){
+	startTimer();
 }
 
 function goToNextItem() {
@@ -99,16 +109,25 @@ function setClickedItem(e) {
 $(function() {
 	$('#overlay').css({opacity: 0.5});
 	positionCenter($('.video_popup'));
+	positionCenter($('.register_popup'));
 
 
 	$('.play').click(function() { 
 		$('.video_popup, #overlay').fadeIn(300);
+		$('#playYoutube').trigger('click');
+		return false;
+	});
+
+	$('.queries').click(function() { 
+		$('.register_popup, #overlay').fadeIn(300);
+		$('.video_popup').fadeOut(300);
 		return false;
 	});
 
 	
 	$('.close_popup').click(function() {
-		$('.video_popup, #overlay').fadeOut(300);
+		$('.video_popup, .register_popup, #overlay').fadeOut(300);
+		$('#pauseYoutube').trigger('click');
 		return false;
 	});
 
@@ -139,4 +158,9 @@ var h = $(window).height();
 	});
 
 
+// watch presentation video
+
+classList.contains("play").onmouseover = function() {
+	classList.contains("watch").style.fill = "red";
+}
 

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Herramienta de análisis de las palabras clave SEMrush</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/carusel.js"></script>
+	
+
+</head>
+<body>
+
+	<!-- pop-up starts -->
+
+	<div id="overlay"></div>
+	
+
+	<div class="video_popup popup">
+		<div class="video_popup__wrapper">
+			
+			<svg class="close_popup" id="Слой_1" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve">
+				<g id="XMLID_48_">
+					<g id="XMLID_1_">
+						<path id="XMLID_17_" class="st0" d="M11,1c5.5,0,10,4.5,10,10c0,5.5-4.5,10-10,10S1,16.5,1,11C1,5.5,5.5,1,11,1 M11,0
+							C4.9,0,0,4.9,0,11c0,6.1,4.9,11,11,11s11-4.9,11-11C22,4.9,17.1,0,11,0L11,0z"/>
+					</g>
+					<g id="XMLID_4_">
+						<path id="XMLID_2_" class="st0" d="M15.3,7.4l-7.8,7.8c-0.2,0.2-0.5,0.2-0.7,0l0,0c-0.2-0.2-0.2-0.5,0-0.7l7.8-7.8
+							c0.2-0.2,0.5-0.2,0.7,0l0,0C15.4,7,15.4,7.3,15.3,7.4z"/>
+						<path id="XMLID_3_" class="st0" d="M7.4,6.7l7.8,7.8c0.2,0.2,0.2,0.5,0,0.7l0,0c-0.2,0.2-0.5,0.2-0.7,0L6.7,7.4
+							C6.6,7.3,6.6,7,6.7,6.8l0,0C7,6.6,7.3,6.6,7.4,6.7z"/>
+					</g>
+				</g>
+			</svg>
+
+			<iframe id="Youtube" width="560" height="315" src="https://www.youtube.com/embed/rL47BTUClO8?list=PLV7hU9BBDbaT1HJmiStHFYEVUfzNgFyXQ?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>			
+			<div id="playYoutube"></div>
+			<div id="pauseYoutube"></div><br>
+
+			<script src="//www.youtube.com/player_api"></script>
+			<script>
+				var play;
+				function onYouTubePlayerAPIReady() {
+				    play = new YT.Player('Youtube', {videoId: 'rL47BTUClO8?list=PLV7hU9BBDbaT1HJmiStHFYEVUfzNgFyXQ',});
+				    document.getElementById('playYoutube').onclick = function() {play.playVideo();};
+				    document.getElementById('pauseYoutube').onclick = function() {play.pauseVideo();};
+				}
+			</script>
+			<div class="button_block">
+				<button class="queries">¡Obtén 10 búsquedas gratis!</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="register_popup popup">
+		<img src="img/logo.png" alt="semrush.com" style="margin-left: -10px;">
+		<svg class="close_popup" id="Слой_1" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve">
+			<g id="XMLID_48_">
+				<g id="XMLID_1_">
+					<path id="XMLID_17_" class="st0" d="M11,1c5.5,0,10,4.5,10,10c0,5.5-4.5,10-10,10S1,16.5,1,11C1,5.5,5.5,1,11,1 M11,0
+						C4.9,0,0,4.9,0,11c0,6.1,4.9,11,11,11s11-4.9,11-11C22,4.9,17.1,0,11,0L11,0z"/>
+				</g>
+				<g id="XMLID_4_">
+					<path id="XMLID_2_" class="st0" d="M15.3,7.4l-7.8,7.8c-0.2,0.2-0.5,0.2-0.7,0l0,0c-0.2-0.2-0.2-0.5,0-0.7l7.8-7.8
+						c0.2-0.2,0.5-0.2,0.7,0l0,0C15.4,7,15.4,7.3,15.3,7.4z"/>
+					<path id="XMLID_3_" class="st0" d="M7.4,6.7l7.8,7.8c0.2,0.2,0.2,0.5,0,0.7l0,0c-0.2,0.2-0.5,0.2-0.7,0L6.7,7.4
+						C6.6,7.3,6.6,7,6.7,6.8l0,0C7,6.6,7.3,6.6,7.4,6.7z"/>
+				</g>
+			</g>
+		</svg>
+
+		<h2>Obtén 10 búsquedas gratis</h2>
+		<form action="">
+			<label for="input_email"></label>
+			<input id="input_email" type="email" name="email" placeholder="Email">
+			<label for="input_pass"></label>
+			<input id="input_pass" type="password" name="password" placeholder="Password">
+			<button type="submit">¡Obtén búsquedas gratis!</button>
+		</form>
+		
+	</div>
+
+	<!-- pop-up ends -->	
+
+
+
+	<!-- header starts -->
+
+	<div class="header">
+		<div class="container">
+			<ul class="nav clearfix">
+				<li><a href="http://es.semrush.com/mobile-us/prices?" target="_blank">Precios</a></li>
+				<li><a href="http://es.semrush.com/mobile-us/support/contact/" target="_blank">Contacto</a></li>
+				<li><a href="http://es.semrush.com/blog/" target="_blank">Blog</a></li>
+				<li><a href="#" target="_blank">Registro (gratis)</a></li>
+			</ul>
+			<a href="https://www.semrush.com" class="logo">
+				<img src="img/logo.png" alt="semrush.com">
+			</a>
+		</div>
+	</div>
+
+	<!-- header ends -->
+
+	
+	
+	<!-- main_view starts -->
+
+	<div class="main_view">
+		<div class="container clearfix">
+			<h1 class="spanish">Herramienta de análisis de palabras<br>clave de SEMrush</h1>
+			<h3 class="spanish">... es mucho mejor que otras herramientas de palabras clave</h3>
+
+			<div class="tablet-box">
+				<img src="img/watch_esp.svg" alt="alt" class="watch spanish">
+				<img src="img/tablet.png" alt="watch video" class="tablet">
+				<a href="#" class="play"></a>
+			</div>
+			
+			<div class="main_view__left">
+				<ul>
+					<li>Encuentra palabras clave de larga cola con baja competencia para las campañas de SEO y PPC</li>
+					<li>Encuentra palabras clave para los anuncios de la lista de productos de Google</li>
+					<li>Descubre el volumen de búsqueda, CPC, tendencias y Ads history (Textos de los anuncios) para cada palabra clave</li>
+					<li>Obtén la concordancia de frase y palabras clave relacionadas</li>
+					<li>Encuentra palabras clave en 29 bases de datos regionales de SEMrush</li>
+					<li>Mide la dificultad de palabras clave de forma instantánea</li>
+				</ul>
+				<div class="button_block">
+					<button class="queries spanish">¡Obtén 10 búsquedas gratis!</button><br>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- main_view ends -->
+
+	
+
+	<!-- main_stats starts -->
+
+	<div class="main_stats">
+		<div class="container clearfix">
+			<div class="main_stats__item">
+				<img src="img/users.png" alt="590 000 users"><br>
+				<span class="number">590 000</span>
+				<span>usuarios</span>
+			</div>
+			<div class="main_stats__item">
+				<img src="img/keywords.png" alt="106 600 000+ keywords"><br>
+				<span class="number">106 600 000+</span>
+				<span>palabras clave</span>
+			</div>
+			<div class="main_stats__item">
+				<img src="img/domains.png" alt="46 000 000+ domains"><br>
+				<span class="number">46 000 000+</span>
+				<span>dominios</span>
+			</div>
+			<div class="main_stats__item">
+				<img src="img/databases.png" alt="29 databases, 16 languages"><br>
+				<span class="number">29 bases de datos</span>
+				<span>16 idiomas</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- main_stats ends -->
+
+	
+
+	<!-- our_clients starts -->
+
+	<div class="our_clients">
+		<div class="container">
+			<h2>Nuestros clientes</h2>
+			
+			<div class="client_carousel">  
+				<div class="prev"><a href="#"></a></div>
+				<div class="next"><a href="#"></a></div>
+				<div class="carousel_wrapper">
+					<div class="carousel_items">
+						<div class="carousel_item ci1">
+							<span href="" class="cl1"></span>
+						</div>
+						<div class="carousel_item ci2">
+							<span href="" class="cl2"></span>
+						</div>
+						<div class="carousel_item ci3">
+							<span href="" class="cl3"></span>
+						</div>
+						<div class="carousel_item ci4">
+							<span href="" class="cl4"></span>
+						</div>
+						<div class="carousel_item ci5">
+							<span href="" class="cl5"></span>
+						</div>
+						<div class="carousel_item ci6">
+							<span href="" class="cl6"></span>
+						</div>
+						<div class="carousel_item ci7">
+							<span href="" class="cl7"></span>
+						</div>
+						<div class="carousel_item ci8">
+							<span href="" class="cl8"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- our_clients ends -->
+
+
+
+	<!-- stats_review starts -->
+
+	<div id="ass" class="stats_review">
+		<div class="container">
+			<div class="stats_review__left">
+				<h2 class="spanish">Palabras clave:<br><span>Todo el análisis posible</span></h2>
+			</div>
+			<img src="img/dashboard_esp.png" alt="review" class="dashboard">
+
+			<!-- slider -->
+
+			<div class="slider_box">
+
+				<div class="slider_wrapper">
+			
+					<!-- slider item 1 starts -->
+	
+					<div class="slider_item display_block" id="slide_1">
+						
+	
+						<div class="slider_item__left">
+							<div class="slider_img">
+								<img class="slider_img__img" src="img/overview.svg" alt="" height="240" width="240">
+							</div>
+							<h4>Resumen</h4>
+							<p>SSEMrush te muestra el volumen de búsqueda, CPC y el nivel de competencia para resultados orgánicos y de pago.</p>
+						</div>
+	
+						
+						<img class="point_line" id="overview_line" src="img/overview_line.svg" alt="alt" height="29" width="278">
+						<div class="point" id="overview_point"></div>
+						<div class="pop" id="overview_pop">
+							<img src="img/overview_pop_spa.jpg" alt="alt">
+						</div>
+					</div>
+	
+					<!-- slider item 1 ends -->
+
+
+
+					<!-- slider item 2 starts -->
+	
+					<div class="slider_item" id="slide_2">
+						
+	
+						<div class="slider_item__left">
+							<div class="slider_img appear">
+								<img class="slider_img__img fade_in" src="img/trend.svg" alt="" height="240" width="240">
+							</div>
+							<h4 class="from_bottom">Tendencias</h4>
+							<p class="from_bottom">Visualiza cambios en el volumen de búsqueda de una palabra clave durante cierto periodo de tiempo.</p>
+						</div>
+	
+						
+						<img class="point_line fade_in" id="trend_line" src="img/trend_line.svg" alt="alt" height="43" width="552">
+						<div class="point appear" id="trend_point"></div>
+						<div class="pop anim_up" id="trend_pop">
+							<img src="img/trend_pop_spa.jpg" alt="alt">
+						</div>
+					</div>
+	
+					<!-- slider item 2 ends -->
+
+
+
+					<!-- slider item 3 starts -->
+	
+					<div class="slider_item" id="slide_3">
+						
+	
+						<div class="slider_item__left">
+							<div class="slider_img appear">
+								<img class="slider_img__img fade_in" src="img/phrase.svg" alt="" height="240" width="240">
+							</div>
+							<h4 class="from_bottom">Phrase Match Keywords (Informe de concordancia de frase clave)</h4>
+							<p class="from_bottom">SEMrush muestra las consultas de búsqueda que contienen la palabra o frase clave buscadas. Utiliza esta opción para conseguir nuevas palabras clave de cara a optimizar tu web o para tu campaña de AdWords.</p>
+						</div>
+	
+						
+						<img class="point_line fade_in" id="phrase_line" src="img/phrase_line.svg" alt="alt" height="124" width="257">
+						<div class="point appear" id="phrase_point"></div>
+						<div class="pop anim_up" id="phrase_pop">
+							<img src="img/phrase_pop_spa.jpg" alt="alt">
+						</div>
+					</div>
+	
+					<!-- slider item 3 ends -->
+
+
+
+					<!-- slider item 4 starts -->
+	
+					<div class="slider_item" id="slide_4">
+						
+	
+						<div class="slider_item__left">
+							<div class="slider_img appear">
+								<img class="slider_img__img fade_in" src="img/related.svg" alt="" height="240" width="240">
+							</div>
+							<h4 class="from_bottom">Opción de búsqueda de palabras clave relacionadas</h4>
+							<p class="from_bottom">Obtén todas las palabras relacionadas con la palabra clave analizada. Utiliza este informe para encontrar oportunidades alternativas para tus campañas de SEO y PPC.</p>
+						</div>
+	
+						
+						<img class="point_line fade_in" id="related_line" src="img/related_line.svg" alt="alt" height="124" width="529">
+						<div class="point appear" id="related_point"></div>
+						<div class="pop anim_up" id="related_pop">
+							<img src="img/related_pop_spa.jpg" alt="alt">
+						</div>
+					</div>
+	
+					<!-- slider item 4 ends -->
+
+
+
+					<!-- slider item 5 starts -->
+	
+					<div class="slider_item" id="slide_5">
+						
+	
+						<div class="slider_item__left">
+							<div class="slider_img appear">
+								<img class="slider_img__img fade_in" src="img/organic.svg" alt="" height="240" width="240">
+							</div>
+							<h4 class="from_bottom">Resultados de la búsqueda orgánica</h4>
+							<p class="from_bottom">SEMrush muestra qué dominios aparecen en la búsqueda de la palabra clave y qué posición tienen en la página de resultados de un motor de búsqueda.</p>
+						</div>
+	
+						
+						<img class="point_line fade_in" id="organic_line" src="img/organic_line.svg" alt="alt" height="250" width="261">
+						<div class="point appear" id="organic_point" src="img/point.svg"></div>
+						<div class="pop anim_up" id="organic_pop">
+							<img src="img/organic_pop_spa.jpg" alt="alt">
+						</div>
+					</div>
+	
+					<!-- slider item 5 ends -->
+
+
+
+					<!-- slider item 6 starts -->
+	
+					<div class="slider_item" id="slide_6">
+						
+	
+						<div class="slider_item__left">
+							<div class="slider_img appear">
+								<img class="slider_img__img fade_in" src="img/ads.svg" alt="" height="240" width="240">
+							</div>
+							<h4 class="from_bottom">Ads copies (historial de anuncios)</h4>
+							<p class="from_bottom">SEMrush revela todas las palabras clave por las que el dominio consultado aparecía en los resultados de pago de Google durante los últimos 12 meses, así como la posición que ocupaban. Haciendo clic en el cuadro en la columna “block”, podrás ver el anuncio tal y como aparecía.</p>
+						</div>
+	
+						
+						<img class="point_line fade_in" id="ads_line" src="img/ads_line.svg" alt="alt" height="211" width="556">
+						<div class="point appear" id="ads_point"></div>
+						<div class="pop anim_up" id="ads_pop">
+							<img src="img/ads_pop.jpg" alt="alt">
+						</div>
+					</div>
+	
+					<!-- slider item 6 ends -->
+
+
+
+					<!-- slider item 7 starts -->
+	
+					<div class="slider_item" id="slide_7">
+						
+	
+						<div class="slider_item__left">
+							<div class="slider_img appear">
+								<img class="slider_img__img fade_in" src="img/comp.svg" alt="" height="240" width="240">
+							</div>
+							<h4 class="from_bottom">Palabras clave de competidores</h4>
+							<p class="from_bottom">En los informes de competidores en búsqueda orgánica y de competidores en publicidad puedes acceder a las listas de aquellas palabras clave que tu página web comparte con otras páginas. Simplemente haga clic en los números de la columna “Palabras clave comunes”.</p>
+						</div>
+	
+						<img class="comp_plus" src="img/competitors_plus.jpg" alt="alt">
+						<img class="point_line fade_in" id="comp1_line" src="img/comp1_line.svg" alt="alt" height="13" width="115">
+						<img class="point_line fade_in" id="comp2_line" src="img/comp2_line.svg" alt="alt" height="55" width="120">
+						<div class="point appear" id="comp1_point"></div>
+						<div class="point appear" id="comp2_point"></div>
+						<div class="pop anim_up" id="comp_pop">
+							<img src="img/comp_pop_spa.jpg" alt="alt">
+						</div>
+					</div>
+	
+					<!-- slider item 7 ends -->
+
+
+
+	
+				</div>
+	
+				<!-- slider selecter starts -->
+	
+				<ul class="slider_nav nav2 clearfix">
+					<li class="itemLinks" data-slide="slide_1"></li>
+					<li class="itemLinks" data-slide="slide_2"></li>
+					<li class="itemLinks" data-slide="slide_3"></li>
+					<li class="itemLinks" data-slide="slide_4"></li>
+					<li class="itemLinks" data-slide="slide_5"></li>
+					<li class="itemLinks" data-slide="slide_6"></li>
+					<li class="itemLinks" data-slide="slide_7"></li>
+				</ul>
+
+				<!-- slider selecter ends -->
+
+			</div>
+		</div>
+	</div>
+
+	<!-- stats_review ends -->
+
+
+
+	<!-- historical_data starts -->
+
+	<div class="historical_data">
+		<div class="container clearfix">
+			<div class="historical_data__right">
+				<h2>Herramienta de análisis de palabras clave de SEMrush<br><span>“Informe histórico”</span></h2>
+				<p>Informe histórico te permite conseguir información sobre palabras clave y dominios para cada mes. Informe histórico muestra los resultados promedios para cada mes concreto.</p>
+				<p>La herramienta de informe histórico está disponible para 11 bases de datos  <span>de enero de 2012 en adelante) y para 17 nuevas bases de datos regionales</span> con datos recopilados desde diciembre de 2013 en adelante.</p>
+			</div>
+			<img src="img/history.png" alt="historical data">
+		</div>
+	</div>
+
+	<!-- historical_data ends -->
+
+
+
+	<!-- customers_say starts -->
+
+	<div class="customers_say">
+		<div class="container">
+			<h2>¿Qué opinan nuestros<span> clientes sobre nosotros?</span></h2>
+				<div class="say_wrap clearfix">
+					<div class="say_item">
+						<div class="say_img"><img src="img/Enfoquesdigitales.jpg" alt="SEJ"></div>
+						<p>Es información clave para nuestros negocios y el crecimiento de los mismos.</p>
+						<span class="author">Enfoquesdigitales.com</span>
+					</div>
+					<div class="say_item">
+						<div class="say_img"><img src="img/3wmk.jpg" alt="ClickZ"></div>
+						<p>En resumen, una completa herramienta, muy recomendable para cualquier SEO.</p>
+						<span class="author">3wmk.com</span>
+					</div>
+					<div class="say_item">
+						<div class="say_img"><img src="img/Jorgequintas.jpg" alt="Seobook"></div>
+						<p>Personalmente recomiendo el uso de la aplicación para incrementar el crecimiento de los proyectos web.</p>
+						<span class="author">Jorgequintas.com</span>
+					</div>
+					<div class="button_block spanish">
+						<button class="queries">¡Obtén 10 búsquedas gratis!</button><br>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<!-- customers_say ends -->	
+
+
+
+	<!-- Our_databases starts -->
+
+
+	<div class="our_databases">
+		<div class="container">
+			<h2>Nuestras <span>Bases de datos</span></h2>
+			<div class="flags clearfix">
+				<div class="flags__item">
+					<a href="#" class="usa"></a>
+					<span>Estados Unidos<br>(Google, Bing)</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="ger"></a>
+					<span>Alemania</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="bel"></a>
+					<span>Bélgica</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="nor"></a>
+					<span>Noruega</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="tur"></a>
+					<span>Turquía</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="uk"></a>
+					<span>El Reino Unido</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="fra"></a>
+					<span>Francia</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="net"></a>
+					<span>Países Bajos</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="pol"></a>
+					<span>Polonia</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="bra"></a>
+					<span>Brasil</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="can"></a>
+					<span>Canadá</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="spa"></a>
+					<span>España</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="den"></a>
+					<span>Dinamarca</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="swe"></a>
+					<span>Suecia</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="arg"></a>
+					<span>Argentina</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="aus"></a>
+					<span>Australia</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="ita"></a>
+					<span>Italia</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="fin"></a>
+					<span>Finlandia</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="swi"></a>
+					<span>Suiza</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="mex"></a>
+					<span>México</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="rus"></a>
+					<span>Rusia</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="isr"></a>
+					<span>Israel</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="ire"></a>
+					<span>Irlanda</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="sin"></a>
+					<span>Singapur</span>
+				</div>
+				<div class="flags__item">
+					<a href="#" class="hon"></a>
+					<span>Hong Kong</span>
+				</div>
+
+				<div class="flags__item">
+				</div>
+
+				<div class="flags__item">
+					<a href="#" class="ind"></a>
+					<span>India</span>
+				</div>
+				<div class="flags__item">
+				</div>
+				<div class="flags__item">
+					<a href="#" class="jap"></a>
+					<span>Japan</span>
+				</div>
+
+				<div class="flags__item">
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Our_databases ends -->
+
+	<!-- footer starts -->
+
+	<div class="footer">
+		<div class="container clearfix">
+			<div class="footer__right_block clearfix">
+				<ul class="footer__menu">
+					<li> <a href="http://es.semrush.com/mobile-us/prices?" target="_blank">Precios</a></li>
+					<li> <a href="http://es.semrush.com/blog/" target="_blank">blog</a></li>
+					<li><a href="#" class="register" target="_blank">Registro</a></li>
+				</ul>
+				<div class="social_block">
+					<span>Síguenos:</span>
+					<ul class=" social_ul clearfix">
+						<li><a href="#" class="tw"></a></li>
+						<li><a href="#" class="fb"></a></li>
+						<li><a href="#" class="in"></a></li>
+						<li><a href="#" class="go"></a></li>
+						<li><a href="#" class="inst"></a></li>
+						<li><a href="#" class="yt"></a></li>
+					</ul>
+				</div>
+			</div>
+			<table class="contacts">
+				<tr>
+					<td class="td_first phone">+34-900-838964</td>
+					<td class="td_second location">USA, 8 Neshaminy Interplex, Ste 207, Trevose, PA 19053</td>
+				</tr>
+				<tr>
+					<td class="td_first skype">semrush.phone</td>
+					<td class="td_second mail">mail@semrush.com</td>
+				</tr>
+			</table>
+			
+		</div>
+		<div class="footer__copyright">
+			<div class="container">
+				<span>® 2008-2015. SEMrush. Todos los derechos reservados.</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer ends -->
+	
+	
+	<script src="js/script.js"></script>
+	
+
+</body>
+</html>
